@@ -309,7 +309,7 @@
       points.forEach(point => { const active = point.userData.id === id; point.userData.active = active; point.userData.network.material.color.set(active ? point.userData.color : 0x31454d); point.children.slice(0, -1).forEach(node => node.material.color.set(active ? point.userData.color : 0x476068)); });
     };
     const loader = new GLTFLoader();
-    loader.load('assets/brain/source/Rotten%20Brain.glb', gltf => {
+    const showOriginalBrain = gltf => {
       const model = gltf.scene;
       const box = new THREE.Box3().setFromObject(model); const center = box.getCenter(new THREE.Vector3()); const size = box.getSize(new THREE.Vector3());
       const scale = 3.1 / Math.max(size.x, size.y, size.z); model.scale.setScalar(scale); model.position.sub(center.multiplyScalar(scale));
@@ -317,7 +317,12 @@
       brain.add(model);
       hotspot('reaction', [-.85, .18, 1.05]); hotspot('decision', [.72, .55, .86]); hotspot('visual', [-1.18, -.2, .7]); hotspot('focus', [.32, 1.03, .48]);
       fallback.classList.add('is-hidden'); loading.remove(); setBrainInfo('reaction');
-    }, undefined, () => { loading.hidden = true; });
+    };
+    const showModelError = error => { console.error('Modelo 3D:', error); loading.textContent = 'No fue posible preparar el modelo original.'; };
+    fetch('./assets/brain/source/Rotten%20Brain.glb')
+      .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.arrayBuffer(); })
+      .then(buffer => loader.parse(buffer, '', showOriginalBrain, showModelError))
+      .catch(showModelError);
     const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
     renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; });
     renderer.domElement.addEventListener('click', event => {

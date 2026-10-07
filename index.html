@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Treino Mental — preparação mental para atletas." />
+  <title>Treino Mental — Performance começa dentro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#090909; --paper:#f5f5f3; --accent:#ffffff; --muted:#9b9b9b; --line:rgba(255,255,255,.16); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ink); color:var(--paper); font-family:Manrope,Arial,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1180px,calc(100% - 48px)); margin:auto; }
+    nav { height:78px; display:flex; align-items:center; justify-content:space-between; position:absolute; inset:0 0 auto; z-index:3; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.11em; font-size:11px; text-transform:uppercase; }
+    .brand img { width:39px; height:39px; border-radius:50%; object-fit:cover; }
+    .nav-links { display:flex; gap:28px; color:#d2d4d0; font-size:13px; }
+    .menu { display:none; }
+    .button { display:inline-flex; gap:11px; align-items:center; padding:14px 20px; border-radius:99px; background:var(--accent); color:#111; font-size:13px; font-weight:800; transition:.2s; }
+    .button:hover { transform:translateY(-2px); background:#d9d9d9; }
+    .hero { min-height:545px; padding:112px 0 58px; position:sticky; top:0; z-index:0; overflow:hidden; background:radial-gradient(circle at 78% 48%,#242424 0,transparent 31%),radial-gradient(circle at 24% 36%,#202020 0,transparent 32%),#090909; }
+    .hero-content { max-width:none; display:grid; grid-template-columns:1fr minmax(290px,455px); align-items:center; gap:50px; position:relative; z-index:1; }
+    .hero-card { width:100%; margin:0; justify-self:end; overflow:visible; transform:translateY(0); will-change:transform; position:relative; }
+    .hero-card:before { content:''; position:absolute; inset:16% 8%; z-index:-1; border-radius:50%; background:rgba(255,255,255,.14); filter:blur(38px); }
+    .hero-card img { display:block; width:100%; height:auto; border-radius:22px; box-shadow:0 23px 60px rgba(0,0,0,.46), 0 0 0 1px rgba(255,255,255,.12); animation:card-float 5.8s ease-in-out infinite; will-change:transform; }
+    @keyframes card-float { 0%,100% { transform:translateY(0) rotate(.7deg); } 50% { transform:translateY(-12px) rotate(-.7deg); } }
+    .hero-copy { max-width:575px; }
+    .eyebrow { color:#c9c9c9; font:500 11px 'DM Mono',monospace; letter-spacing:.17em; text-transform:uppercase; display:flex; gap:11px; align-items:center; }
+    .eyebrow:before { content:''; width:24px; height:1px; background:currentColor; }
+    h1 { font-size:clamp(46px,6.2vw,84px); line-height:.98; letter-spacing:-.065em; margin:20px 0 24px; max-width:670px; }
+    h1 em { color:#cfcfcf; font-style:normal; }
+    .intro { color:#c6c8c3; max-width:440px; line-height:1.65; font-size:16px; margin:0 0 31px; }
+    .strip { position:relative; z-index:2; margin-top:-14px; border-top:1px solid rgba(255,255,255,.75); background:#dedede; color:#101010; padding:17px 0; overflow:hidden; box-shadow:0 -18px 38px rgba(0,0,0,.36); }
+    .strip-inner { display:flex; white-space:nowrap; gap:28px; justify-content:space-between; font:600 12px 'DM Mono',monospace; letter-spacing:.08em; text-transform:uppercase; }
+    section { padding:110px 0; } main > section:not(.hero) { position:relative; z-index:2; margin-top:-48px; padding-top:158px; border-radius:0; box-shadow:0 -26px 52px rgba(0,0,0,.38); } main > section:not(.hero):before { display:none; } #atletas { background:#090909; border-top:1px solid #4a4a4a; } .training { border-top:1px solid #5a5a5a; } .cta { border-top:1px solid #fff; } .title-row { display:flex; justify-content:space-between; align-items:end; margin-bottom:38px; }
+    h2 { margin:10px 0 0; font-size:clamp(31px,4vw,52px); letter-spacing:-.055em; line-height:1.05; max-width:560px; }
+    .sub { color:var(--muted); font-size:14px; max-width:255px; line-height:1.6; }
+    .athlete-carousel { overflow:hidden; cursor:grab; user-select:none; touch-action:pan-y; } .athlete-carousel.dragging { cursor:grabbing; }
+    .athletes { display:flex; gap:14px; width:max-content; }
+    .athlete { width:360px; height:405px; flex:none; border-radius:8px; position:relative; overflow:hidden; background:#202522 center/cover; animation:athlete-sway 5.4s ease-in-out infinite; }
+    .athlete:nth-child(3n+2) { animation-delay:-1.8s; } .athlete:nth-child(3n) { animation-delay:-3.5s; }
+    @keyframes athlete-sway { 0%,100% { transform:rotate(-.8deg) translateY(0); } 50% { transform:rotate(.8deg) translateY(-5px); } }
+    .athlete:first-child { background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-01.jpg'); }
+    .athlete:nth-child(2) { background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-02.jpg'); }
+    .athlete:nth-child(3) { background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-03.jpg'); }
+    .athlete-info { position:absolute; inset:auto 22px 20px; } .athlete-info b { display:block; font-size:18px; letter-spacing:-.03em; }
+    .athlete-info span { font:10px 'DM Mono',monospace; text-transform:uppercase; color:#ced0cb; letter-spacing:.09em; }
+    .training { background:#171717; } .training-head { max-width:730px; margin-bottom:35px; } .training-head .eyebrow { display:none; }
+    .training-head h2 { margin-bottom:16px; } .training-head .intro { margin:0; max-width:650px; font-size:14px; }
+    .accordion-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; align-items:start; }
+    #metodo > .wrap > .accordion-grid:not(.programs) { display:none; }
+    .brain-explorer { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(290px,.85fr); min-height:430px; margin:12px 0 20px; overflow:hidden; border:1px solid #31546a; background:radial-gradient(circle at 36% 48%,#17394d 0,transparent 41%),#0d151b; }
+    .brain-stage { min-height:430px; position:relative; overflow:hidden; perspective:850px; } .brain-stage canvas { display:block; width:100%!important; height:100%!important; position:absolute; inset:0; z-index:2; } .brain-loading { position:absolute; inset:0; display:grid; place-items:center; margin:0; color:#a9d7ed; font:11px 'DM Mono',monospace; letter-spacing:.08em; z-index:3; pointer-events:none; } .brain-stage:after { content:'ARRASTE PARA GIRAR · CLIQUE EM UM PONTO'; position:absolute; left:22px; bottom:18px; color:#a9d7ed; font:10px 'DM Mono',monospace; letter-spacing:.08em; pointer-events:none; z-index:5; }
+    .brain-fallback { position:absolute; inset:0; display:grid; place-items:center; cursor:grab; touch-action:none; } .brain-fallback.is-hidden { display:none; } .brain-fallback:active { cursor:grabbing; } .brain-shape { position:relative; width:255px; height:205px; transform-style:preserve-3d; transition:transform .15s ease-out; filter:drop-shadow(0 24px 26px rgba(0,0,0,.55)); } .brain-lobe { position:absolute; border:1px solid rgba(181,238,255,.48); background:radial-gradient(circle at 32% 27%,#b9eaff 0,#5397b8 23%,#173b51 68%,#09151d 100%); box-shadow:inset -13px -12px 27px rgba(0,0,0,.45),inset 8px 8px 18px rgba(205,246,255,.22); border-radius:48% 53% 46% 51%; transform-style:preserve-3d; } .brain-lobe:nth-child(1){width:112px;height:122px;left:24px;top:27px;transform:translateZ(18px) rotate(-17deg)} .brain-lobe:nth-child(2){width:118px;height:129px;left:105px;top:21px;transform:translateZ(15px) rotate(14deg)} .brain-lobe:nth-child(3){width:82px;height:94px;left:5px;top:75px;transform:translateZ(7px) rotate(21deg)} .brain-lobe:nth-child(4){width:83px;height:95px;right:2px;top:76px;transform:translateZ(7px) rotate(-21deg)} .brain-lobe:nth-child(5){width:106px;height:62px;left:75px;bottom:9px;transform:translateZ(4px);border-radius:44% 50% 54% 44%} .brain-lobe:after { content:''; position:absolute; inset:16% 10%; border-radius:50%; border:1px solid rgba(216,248,255,.24); box-shadow:0 13px 0 -5px rgba(216,248,255,.17),0 26px 0 -6px rgba(216,248,255,.13); } .brain-point { position:absolute; z-index:4; width:18px; height:18px; border-radius:50%; border:2px solid #e9fbff; background:#61cfff; box-shadow:0 0 0 7px rgba(97,207,255,.16),0 0 22px #62cdfd; cursor:pointer; animation:brainPulse 1.8s infinite ease-in-out; } .brain-point:hover,.brain-point.is-active { background:#fff; transform:scale(1.25); } .brain-point[data-area="reaction"]{left:38%;top:53%}.brain-point[data-area="decision"]{left:63%;top:35%;animation-delay:.35s}.brain-point[data-area="visual"]{left:16%;top:60%;animation-delay:.7s}.brain-point[data-area="focus"]{left:52%;top:15%;animation-delay:1.05s}@keyframes brainPulse{50%{box-shadow:0 0 0 11px rgba(97,207,255,.05),0 0 29px #62cdfd}}
+    .brain-info { display:flex; flex-direction:column; justify-content:center; padding:42px; border-left:1px solid rgba(166,223,255,.2); background:rgba(8,13,16,.54); } .brain-info .eyebrow { margin:0 0 13px; } .brain-info h3 { margin:0 0 13px; font-size:clamp(26px,3vw,38px); letter-spacing:-.055em; } .brain-info p { margin:0; color:#b9cbd3; font-size:14px; line-height:1.65; }
+    .brain-tags { display:flex; flex-wrap:wrap; gap:7px; margin:22px 0; } .brain-tags span { padding:6px 8px; border:1px solid #41657a; border-radius:3px; color:#d4f0ff; font:10px 'DM Mono',monospace; }
+    .brain-info .card-action[disabled] { opacity:.45; cursor:not-allowed; transform:none; }
+    details.card { background:#202020; border:1px solid #353535; border-radius:8px; overflow:hidden; transition:border-color .2s, background .2s; }
+    details.card[open] { border-color:#a5a5a5; background:#262626; } summary { list-style:none; cursor:pointer; padding:20px; display:grid; grid-template-columns:1fr 24px; align-items:center; gap:8px; } summary::-webkit-details-marker { display:none; }
+    .card-title { font-size:16px; font-weight:800; letter-spacing:-.03em; }
+    .plus { font-size:21px; font-weight:300; text-align:right; color:#d7d7d7; transition:transform .2s; } details[open] .plus { transform:rotate(45deg); }
+    .card-body { padding:0 20px 21px; color:#b7b7b7; font-size:13px; line-height:1.6; } .card-body p { margin:0 0 17px; }
+    .metrics { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; } .metric { padding:6px 8px; border:1px solid #4a4a4a; border-radius:3px; color:#eee; font:10px 'DM Mono',monospace; }
+    .card-action { display:inline-flex; align-items:center; gap:8px; border:0; border-radius:99px; padding:10px 14px; background:#f1f1f1; color:#111; font:700 11px Manrope,sans-serif; cursor:pointer; transition:transform .2s,background .2s; } .card-action:hover { transform:translateY(-2px); background:#fff; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card { position:relative; min-height:136px; background:radial-gradient(circle at 100% 0,#2a5977 0,transparent 43%),linear-gradient(135deg,#172d3e,#0e171e); border-color:#31546a; box-shadow:inset 0 1px rgba(185,230,255,.12),0 8px 22px rgba(0,0,0,.16); transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card:before { content:''; position:absolute; left:0; top:24px; bottom:24px; width:3px; border-radius:0 3px 3px 0; background:#5faed4; transition:background .28s ease,top .28s ease,bottom .28s ease; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card:hover { transform:translateY(-5px); background:radial-gradient(circle at 100% 0,#3476a0 0,transparent 49%),linear-gradient(135deg,#1b3b51,#101d27); border-color:#8fd8ff; box-shadow:inset 0 1px rgba(217,244,255,.2),0 20px 36px rgba(0,0,0,.32); }
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card[open] { background:radial-gradient(circle at 100% 0,#3783af 0,transparent 53%),linear-gradient(135deg,#173d56,#0f202c); border-color:#b7e8ff; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card[open]:before { top:0; bottom:0; background:#c5edff; }
+    #metodo > .wrap > .accordion-grid:not(.programs) summary { min-height:136px; grid-template-columns:62px 1fr 38px; gap:17px; padding:25px 25px 25px 29px; }
+    #metodo > .wrap > .accordion-grid:not(.programs) summary:before { content:'◉'; display:grid; place-items:center; width:58px; height:58px; border:1px solid #47728b; border-radius:16px; background:rgba(0,0,0,.2); box-shadow:inset 0 1px rgba(207,239,255,.12); color:#d7f3ff; font-size:22px; }
+    #metodo > .wrap > .accordion-grid:not(.programs) .card-title { font-size:18px; letter-spacing:-.04em; } #metodo > .wrap > .accordion-grid:not(.programs) .card-title:after { display:block; margin-top:7px; color:#b4d5e4; font:10px 'DM Mono',monospace; letter-spacing:.08em; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(1) .card-title:after { content:'VELOCIDADE · CONTROLE'; } #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(2) .card-title:after { content:'TÁTICA · SOB PRESSÃO'; } #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(3) .card-title:after { content:'CAMPO · PERCEPÇÃO'; } #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(4) .card-title:after { content:'FOCO · PRECISÃO'; }
+    #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(2) summary:before { content:'↯'; } #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(3) summary:before { content:'◎'; } #metodo > .wrap > .accordion-grid:not(.programs) details:nth-child(4) summary:before { content:'⌘'; }
+    #metodo > .wrap > .accordion-grid:not(.programs) .plus { display:grid; place-items:center; width:38px; height:38px; border:0; border-radius:12px; background:#bdeaff; color:#0d2432; box-shadow:0 5px 15px rgba(0,0,0,.24); font-size:20px; }
+    #metodo > .wrap > .accordion-grid:not(.programs) .card-body { margin:0 25px 25px 29px; padding:20px 0 0 78px; border-top:1px solid rgba(185,230,255,.22); }
+    .training-note { margin:18px 0 65px; padding:18px 20px; border:1px solid #343434; border-left:3px solid #ddd; border-radius:0 7px 7px 0; background:#1d1d1d; color:#b8b8b8; font-size:13px; line-height:1.6; } .training-note b { display:block; margin-bottom:4px; color:#f2f2f2; font:11px 'DM Mono',monospace; letter-spacing:.09em; }
+    .programs-title { margin-bottom:20px; } .programs-title h3 { margin:8px 0 0; font-size:26px; letter-spacing:-.05em; }
+    .programs { grid-template-columns:repeat(3,1fr); }
+    .program-card { position:relative; padding:20px; background:linear-gradient(145deg,#2b2b2b,#1d1d1d)!important; border-color:#747474!important; box-shadow:inset 0 1px rgba(255,255,255,.08), 0 14px 35px rgba(0,0,0,.2); transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .program-card:hover { transform:translateY(-6px); border-color:#f0f0f0!important; box-shadow:inset 0 1px rgba(255,255,255,.18), 0 21px 45px rgba(0,0,0,.38); }
+    .program-card .card-title { display:block; margin-bottom:18px; } .program-card .card-body { padding:0; } .program-card .plus { display:none; }
+    .reveal { opacity:1; transform:none; filter:none; } .reveal > .wrap { opacity:0; transform:translateY(52px); filter:blur(3px); transition:opacity .72s ease, transform .72s cubic-bezier(.16,.82,.22,1), filter .55s ease; }
+    .reveal.is-visible > .wrap { opacity:1; transform:translateY(0); filter:blur(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal > .wrap { opacity:1; transform:none; filter:none; transition:none; } .hero-card img { animation:none; } }
+    .quote { padding:90px 0; text-align:center; background:linear-gradient(180deg,#101512,#171c19); }
+    .quote blockquote { max-width:860px; margin:18px auto 22px; font-size:clamp(28px,4vw,50px); font-weight:700; letter-spacing:-.055em; line-height:1.14; }
+    .quote cite { font-style:normal; color:var(--muted); font:11px 'DM Mono',monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .cta { padding:46px 0; background:var(--paper); color:var(--ink); } .cta-inner { display:flex; justify-content:space-between; align-items:center; gap:40px; }
+    .cta-copy { display:grid; grid-template-columns:.82fr 1.18fr; gap:30px; max-width:810px; } .cta-copy p { margin:0; } .cta-lead { font-size:clamp(20px,2vw,28px); font-weight:800; letter-spacing:-.05em; line-height:1.08; } .cta-detail { align-self:end; color:#555; font-size:15px; line-height:1.5; max-width:390px; }
+    footer { padding:28px 0; color:#8c908a; font-size:12px; } footer .wrap { display:flex; justify-content:space-between; }
+    .reaction-game[hidden] { display:none; } .reaction-game { position:fixed; inset:0; z-index:20; display:flex; flex-direction:column; background:radial-gradient(circle at 50% 50%,#121c21 0,transparent 35%),#080909; color:#f7f7f7; }
+    .game-bar { min-height:68px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #2a2a2a; background:#111; } .game-name { font:800 13px 'DM Mono',monospace; letter-spacing:.08em; }
+    .game-stats { display:flex; gap:9px; align-items:center; } .game-stat { padding:7px 10px; border:1px solid #343434; border-radius:999px; color:#ddd; font:11px 'DM Mono',monospace; } .game-stat strong { color:#f3c32c; } .game-stat.error strong { color:#ff5757; }
+    .game-close { width:36px; height:36px; border:1px solid #383838; border-radius:50%; background:#1d1d1d; color:#fff; font-size:20px; cursor:pointer; }
+    .reaction-stage { flex:1; display:grid; place-items:center; padding:28px; position:relative; } .reaction-board { width:min(390px,86vw); text-align:center; transition:opacity .25s,transform .25s; } .reaction-board.is-hidden { opacity:0; transform:scale(.96); pointer-events:none; } .reaction-status { min-height:26px; margin-bottom:24px; color:#a5c7d7; font:11px 'DM Mono',monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .reaction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:14px; border:1px solid rgba(126,189,218,.16); border-radius:24px; background:rgba(8,12,14,.55); box-shadow:inset 0 1px rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.32); } .reaction-tile { aspect-ratio:1; border:1px solid #2d3a40; border-radius:17px; background:linear-gradient(145deg,#192126,#101416); color:#111; font:800 12px Manrope,sans-serif; cursor:pointer; transition:transform .13s,background .13s,box-shadow .13s,border-color .13s; }
+    .reaction-tile:hover { border-color:#70c3e7; transform:translateY(-2px); } .reaction-tile.target { background:#f4c72d; border-color:#ffe27a; box-shadow:0 0 33px rgba(244,199,45,.62); animation:target-pulse .7s ease-in-out infinite alternate; } .reaction-tile.nogo { background:#e94747; border-color:#ff9696; color:#fff; box-shadow:0 0 30px rgba(233,71,71,.46); } .reaction-tile.error { background:#f04b4b; border-color:#ff9696; color:#fff; box-shadow:0 0 28px rgba(240,75,75,.45); } @keyframes target-pulse { to { transform:scale(1.055); box-shadow:0 0 48px rgba(244,199,45,.8); } }
+    .game-hint { margin-top:22px; color:#747474; font-size:12px; } .game-results { position:absolute; display:grid; place-items:center; width:min(400px,86vw); padding:36px; border:1px solid #426274; border-radius:24px; background:linear-gradient(145deg,#172b36,#0f1519); box-shadow:0 30px 90px rgba(0,0,0,.45); text-align:center; } .game-results[hidden] { display:none; } .game-results h2 { margin:0 0 8px; color:#d9f3ff; font-size:30px; } .game-results p { margin:4px 0; color:#b3c6ce; font-size:14px; } .game-results .button { margin-top:20px; border:0; cursor:pointer; }
+    body.game-open { overflow:hidden; }
+    @media (min-width:721px) { #atletas { position:sticky; top:0; z-index:1; } main > .training { position:sticky; top:0; z-index:2; } main > .cta { z-index:3; } }
+    @media (max-width:720px) { .wrap{width:min(100% - 32px,1180px)} nav{height:66px}.nav-links,nav>.button{display:none}.menu{display:block;background:transparent;border:0;color:white;font-size:13px}.hero{min-height:0;padding:102px 0 55px}.hero-content{grid-template-columns:1fr;gap:30px}.hero-card{width:min(100%,360px);justify-self:start}.hero-copy{max-width:100%}.accordion-grid,.programs{grid-template-columns:1fr;gap:14px}.brain-explorer{grid-template-columns:1fr}.brain-stage{min-height:330px}.brain-info{padding:27px;border-left:0;border-top:1px solid rgba(166,223,255,.2)}.athlete{width:285px;height:330px}.title-row,.cta-inner{align-items:start;flex-direction:column}.cta-copy{grid-template-columns:1fr;gap:13px}.sub{max-width:380px}.strip-inner{justify-content:flex-start}.strip-inner span:nth-child(n+4){display:none}section{padding:72px 0}.cta{padding:52px 0}main > section:not(.hero){margin-top:-32px;padding-top:112px;border-radius:0} }
+  </style>
+</head>
+<body>
+  <header class="wrap"><nav><a class="brand" href="#inicio"><img src="logo.jpg" alt="The Dominant Athlete" /> The Dominant<br>Athlete</a><div class="nav-links"><a href="#atletas">Athletes</a><a href="#metodo">Method</a><a href="#contato">Contact</a></div><a class="button" href="#contato">Start training <span>↗</span></a><button class="menu">MENU</button></nav></header>
+  <main>
+    <section class="hero" id="inicio"><div class="wrap hero-content"><div class="hero-copy"><h1>Treine sua mente.<br><em>Eleve sua performance.</em></h1><p class="intro">A mente também se treina.<br>Desenvolva foco, confiança e controle mental para competir no seu melhor nível.</p><a class="button" href="#contato">Entrená con nosotros <span>→</span></a></div><figure class="hero-card"><img src="hero-card.png" alt="Bruno Pecly: You can't compete with someone who is playing their own game." /></figure></div></section>
+    <section id="atletas"><div class="wrap"><div class="title-row"><h2>ATHLETES</h2></div><div class="athlete-carousel" aria-label="Athletes carousel"><div class="athletes"><article class="athlete"><div class="athlete-info"><b>Lucas Ananias</b><span>MMA</span></div></article><article class="athlete"><div class="athlete-info"><b>Johnny Boy</b><span>BJJ</span></div></article><article class="athlete"><div class="athlete-info"><b>Natália Alves</b><span>MMA</span></div></article></div></div></div></section>
+    <section class="training" id="metodo"><div class="wrap"><div class="training-head"><p class="eyebrow">TDA — Neuro Treinamento</p><h2>Treine a mente para vencer.</h2><p class="intro">De atletas para atletas. A execução é 100% mental. Nada do que fazemos é aleatório: este treinamento aprimora habilidades cognitivas e eleva sua performance.</p></div><div class="accordion-grid"><details class="card"><summary><span class="card-title">REAÇÃO EXPLOSIVA</span><span class="plus">+</span></summary><div class="card-body"><p>Reação explosiva e inibição.</p><div class="metrics"><span class="metric">30s</span><span class="metric">70% GO</span><span class="metric">1.2s window</span></div><p>MELHOR: Sem registro</p><button class="card-action">INICIAR</button></div></details><details class="card"><summary><span class="card-title">PRESSÃO DE DECISÃO</span><span class="plus">+</span></summary><div class="card-body"><p>Decisão tática sob fadiga.</p><div class="metrics"><span class="metric">45s</span><span class="metric">Rule Switch</span><span class="metric">1.5s window</span></div><p>MELHOR: Sem registro</p><button class="card-action">INICIAR</button></div></details><details class="card"><summary><span class="card-title">RASTREIO VISUAL</span><span class="plus">+</span></summary><div class="card-body"><p>Consciência de campo e rastreamento.</p><div class="metrics"><span class="metric">5 ROUNDS</span><span class="metric">8 DOTS</span><span class="metric">Speed Ramps</span></div><p>MELHOR: Sem registro</p><button class="card-action">INICIAR</button></div></details><details class="card"><summary><span class="card-title">GRADES DE CONCENTRAÇÃO</span><span class="plus">+</span></summary><div class="card-body"><p>Foco absoluto e varredura — encontre do 00 ao 99 em ordem.</p><div class="metrics"><span class="metric">100 NUMBERS</span><span class="metric">5/3/2/1 min</span><span class="metric">Focus</span></div><p>MELHOR: Sem registro</p><button class="card-action">INICIAR</button></div></details></div><aside class="training-note"><b>NOTA DE TREINO</b>Para melhores resultados, treine sua mente de forma consistente — no mínimo 3x por semana, idealmente todos os dias. Complete pelo menos uma rodada de cada exercício para construir força mental duradoura.</aside><div class="programs-title"><h3>Programas Dominant Athlete</h3></div><div class="accordion-grid programs"><details class="card program-card" open><summary><span class="card-title">Avaliação Psicológica Gratuita</span><span class="plus">+</span></summary><div class="card-body"><p>Baseada nas avaliações de personalidade mais validadas da psicologia, adaptada especificamente para o esporte — descubra quem você é como competidor.</p><a class="card-action" href="https://www.instagram.com/thedominantathlete/" target="_blank" rel="noopener">FALAR COM A EQUIPE <span>↗</span></a></div></details><details class="card program-card" open><summary><span class="card-title">Livro Gratuito “Domine”</span><span class="plus">+</span></summary><div class="card-body"><p>Domine os princípios centrais da performance de elite e aprenda como aplicá-los no treino, competição e vida diária.</p><a class="card-action" href="https://www.instagram.com/thedominantathlete/" target="_blank" rel="noopener">FALAR COM A EQUIPE <span>↗</span></a></div></details><details class="card program-card" open><summary><span class="card-title">Treinamento de Performance Mental Online</span><span class="plus">+</span></summary><div class="card-body"><p>Um sistema completo que combina psicologia e neurociência — mais de 30 ferramentas para desbloquear sua melhor versão, dentro e fora de campo.</p><a class="card-action" href="https://www.instagram.com/thedominantathlete/" target="_blank" rel="noopener">FALAR COM A EQUIPE <span>↗</span></a></div></details></div></div></section>
+    <section class="cta" id="contato"><div class="wrap cta-inner"><div class="cta-copy"><p class="cta-lead">La excelencia no es un destino, es un estado mental.</p><p class="cta-detail">Desarrolla la confianza, el enfoque y la disciplina necesarios para alcanzar tu máximo potencial.</p></div><a class="button" href="mailto:contato@treinomental.online">Falar com a equipe <span>↗</span></a></div></section>
+  </main><footer><div class="wrap"><span>© 2026 Treino Mental</span></div></footer>
+  <section class="reaction-game" id="reactionGame" hidden aria-label="Jogo de reação explosiva"><header class="game-bar"><div class="game-name">REAÇÃO EXPLOSIVA</div><div class="game-stats"><span class="game-stat">⏱ <span id="gameTime">0s</span></span><span class="game-stat">🏆 ACERTOS: <strong id="gameHits">0</strong></span><span class="game-stat error">ERROS: <strong id="gameErrors">0</strong></span><button class="game-close" id="closeGame" aria-label="Fechar jogo">×</button></div></header><main class="reaction-stage"><div class="reaction-board"><div class="reaction-status" id="gameStatus">Prepare-se</div><div class="reaction-grid" id="reactionGrid"></div><p class="game-hint">Clique somente quando aparecer <b>VAI!</b></p></div></main></section>
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.addEventListener('pageshow', () => requestAnimationFrame(() => window.scrollTo(0, 0)));
+    const carousel = document.querySelector('.athlete-carousel');
+    const track = carousel.querySelector('.athletes');
+    track.innerHTML += track.innerHTML;
+    let isDragging = false, startX = 0, startScroll = 0, frame;
+    const loop = () => {
+      if (!isDragging) {
+        carousel.scrollLeft += .55;
+        if (carousel.scrollLeft >= track.scrollWidth / 2) carousel.scrollLeft -= track.scrollWidth / 2;
+      }
+      frame = requestAnimationFrame(loop);
+    };
+    carousel.addEventListener('pointerdown', event => {
+      isDragging = true; startX = event.clientX; startScroll = carousel.scrollLeft;
+      carousel.classList.add('dragging'); carousel.setPointerCapture(event.pointerId);
+    });
+    carousel.addEventListener('pointermove', event => {
+      if (!isDragging) return;
+      carousel.scrollLeft = startScroll - (event.clientX - startX);
+    });
+    const stopDrag = () => { isDragging = false; carousel.classList.remove('dragging'); };
+    carousel.addEventListener('pointerup', stopDrag);
+    carousel.addEventListener('pointercancel', stopDrag);
+    carousel.addEventListener('pointerleave', event => { if (event.buttons === 0) stopDrag(); });
+    frame = requestAnimationFrame(loop);
+    const programActions = ['FAZER AVALIAÇÃO', 'BAIXAR LIVRO GRÁTIS', 'COMEÇAR TREINAMENTO'];
+    document.querySelectorAll('.program-card').forEach((card, index) => {
+      const summary = card.querySelector('summary');
+      summary.addEventListener('click', event => event.preventDefault());
+      card.querySelector('.card-action').innerHTML = `${programActions[index]} <span>↗</span>`;
+    });
+    const gameCards = document.querySelectorAll('#metodo > .wrap > .accordion-grid:not(.programs) details');
+    gameCards.forEach(card => {
+      card.querySelector('summary').addEventListener('click', () => {
+        gameCards.forEach(other => { if (other !== card) other.open = false; });
+      }, true);
+      card.addEventListener('toggle', () => {
+        if (!card.open) return;
+        gameCards.forEach(other => { if (other !== card) other.open = false; });
+      });
+    });
+    document.querySelector('.training-head .intro').textContent = 'Treine suas habilidades mentais, amplie sua vantagem e vença. Um treinamento cognitivo preciso, feito para elevar sua performance.';
+    const brainExplorer = document.createElement('div');
+    brainExplorer.className = 'brain-explorer';
+    brainExplorer.innerHTML = `<div class="brain-stage" id="brainStage" aria-label="Modelo cerebral interativo. Arraste para girar e clique nos pontos para saber mais."><div class="brain-fallback" id="brainFallback"><div class="brain-shape" id="brainShape"><i class="brain-lobe"></i><i class="brain-lobe"></i><i class="brain-lobe"></i><i class="brain-lobe"></i><i class="brain-lobe"></i><button class="brain-point" data-area="reaction" aria-label="Reação explosiva"></button><button class="brain-point" data-area="decision" aria-label="Pressão de decisão"></button><button class="brain-point" data-area="visual" aria-label="Rastreio visual"></button><button class="brain-point" data-area="focus" aria-label="Grades de concentração"></button></div></div><p class="brain-loading" hidden>Carregando modelo 3D…</p></div><aside class="brain-info"><p class="eyebrow">MAPA COGNITIVO</p><h3 id="brainTitle">Redes que se conectam</h3><p id="brainDescription">Os exercícios compartilham redes de atenção e controle executivo. Cada ponto mostra qual habilidade é mais enfatizada em cada treino.</p><div class="brain-tags" id="brainTags"><span>ATENÇÃO</span><span>CONTROLE EXECUTIVO</span><span>PERFORMANCE</span></div><button class="card-action" id="brainLaunch" type="button" disabled>SELECIONE UM PONTO</button></aside>`;
+    document.querySelector('.training-head').insertAdjacentElement('afterend', brainExplorer);
+    const fallbackData = {
+      reaction:{ title:'Reação explosiva', description:'Ênfase em resposta rápida e controle inibitório — reconhecer o sinal certo e frear a resposta quando necessário.', tags:['RESPOSTA RÁPIDA','INIBIÇÃO','ATENÇÃO'], action:'INICIAR REAÇÃO EXPLOSIVA' },
+      decision:{ title:'Pressão de decisão', description:'Ênfase em controle executivo e flexibilidade cognitiva para ajustar decisões sob pressão.', tags:['DECISÃO','FLEXIBILIDADE','CONTROLE EXECUTIVO'], action:'EM BREVE' },
+      visual:{ title:'Rastreio visual', description:'Ênfase em atenção visual, varredura espacial e percepção do campo ao redor.', tags:['ATENÇÃO VISUAL','VARREDURA ESPACIAL','PERCEPÇÃO'], action:'EM BREVE' },
+      focus:{ title:'Grades de concentração', description:'Ênfase em atenção sustentada e manutenção do foco em uma meta por mais tempo.', tags:['FOCO','ATENÇÃO SUSTENTADA','PRECISÃO'], action:'EM BREVE' }
+    };
+    const showBrainInfo = id => {
+      const data = fallbackData[id]; document.querySelector('#brainTitle').textContent = data.title; document.querySelector('#brainDescription').textContent = data.description;
+      document.querySelector('#brainTags').innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join(''); const action = document.querySelector('#brainLaunch'); action.textContent = data.action; action.disabled = id !== 'reaction'; action.onclick = id === 'reaction' ? () => gameCards[0].querySelector('.card-action').click() : null;
+      document.querySelectorAll('.brain-point').forEach(point => point.classList.toggle('is-active', point.dataset.area === id));
+    };
+    document.querySelectorAll('.brain-point').forEach(point => point.addEventListener('click', event => { event.stopPropagation(); showBrainInfo(point.dataset.area); }));
+    const fallback = document.querySelector('#brainFallback'); const brainShape = document.querySelector('#brainShape'); let brainDrag = false, startBrainX = 0, startBrainY = 0, brainRotationX = -8, brainRotationY = -18;
+    const rotateFallback = () => { brainShape.style.transform = `rotateX(${brainRotationX}deg) rotateY(${brainRotationY}deg)`; }; rotateFallback();
+    fallback.addEventListener('pointerdown', event => { brainDrag = true; startBrainX = event.clientX; startBrainY = event.clientY; fallback.setPointerCapture(event.pointerId); });
+    fallback.addEventListener('pointermove', event => { if (!brainDrag) return; brainRotationY += (event.clientX - startBrainX) * .45; brainRotationX -= (event.clientY - startBrainY) * .35; brainRotationX = Math.max(-42, Math.min(42, brainRotationX)); startBrainX = event.clientX; startBrainY = event.clientY; rotateFallback(); });
+    fallback.addEventListener('pointerup', () => { brainDrag = false; });
+    const revealItems = document.querySelectorAll('main > section:not(.hero), .strip');
+    revealItems.forEach(item => item.classList.add('reveal'));
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold:.05, rootMargin:'0px 0px -8% 0px' });
+    revealItems.forEach(item => revealObserver.observe(item));
+    const heroCard = document.querySelector('.hero-card');
+    let scrollFrame;
+    window.addEventListener('scroll', () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        heroCard.style.transform = `translateY(${Math.min(window.scrollY * .07, 28)}px)`;
+        scrollFrame = null;
+      });
+    }, { passive:true });
+    const reactionGame = document.querySelector('#reactionGame');
+    const reactionGrid = document.querySelector('#reactionGrid');
+    const reactionStage = reactionGame.querySelector('.reaction-stage');
+    const reactionBoard = reactionGame.querySelector('.reaction-board');
+    const reactionStatus = document.querySelector('#gameStatus');
+    const reactionTime = document.querySelector('#gameTime');
+    const reactionHits = document.querySelector('#gameHits');
+    const reactionErrors = document.querySelector('#gameErrors');
+    const closeReactionGame = document.querySelector('#closeGame');
+    const reactionResults = document.createElement('div');
+    reactionResults.className = 'game-results'; reactionResults.hidden = true; reactionStage.appendChild(reactionResults);
+    const reactionTiles = Array.from({ length:9 }, (_, index) => {
+      const tile = document.createElement('button');
+      tile.className = 'reaction-tile'; tile.type = 'button'; tile.setAttribute('aria-label', `Posição ${index + 1}`);
+      reactionGrid.appendChild(tile); return tile;
+    });
+    let activeTile = -1, lastTile = -1, roundMode = '', waitTimeout, targetTimeout, sessionInterval, countdownInterval, roundStartedAt, sessionEndsAt, hitCount = 0, errorCount = 0, totalReaction = 0, reactionSamples = 0, gameRunning = false, audioContext;
+    const tone = (frequency, duration, type = 'sine') => {
+      try { audioContext ||= new AudioContext(); const oscillator = audioContext.createOscillator(); const gain = audioContext.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gain.gain.setValueAtTime(.055, audioContext.currentTime); gain.gain.exponentialRampToValueAtTime(.001, audioContext.currentTime + duration); oscillator.connect(gain).connect(audioContext.destination); oscillator.start(); oscillator.stop(audioContext.currentTime + duration); } catch (_) {}
+    };
+    const updateReactionStats = () => {
+      reactionHits.textContent = hitCount; reactionErrors.textContent = errorCount;
+      reactionTime.textContent = gameRunning ? `${Math.max(0, Math.ceil((sessionEndsAt - Date.now()) / 1000))}s` : '30s';
+    };
+    const resetTiles = () => reactionTiles.forEach(tile => { tile.classList.remove('target','nogo','error'); tile.textContent = ''; });
+    const clearRound = () => { clearTimeout(waitTimeout); clearTimeout(targetTimeout); activeTile = -1; roundMode = ''; resetTiles(); };
+    const finishSession = () => {
+      gameRunning = false; clearRound(); clearInterval(sessionInterval); const average = reactionSamples ? Math.round(totalReaction / reactionSamples) : 0; const accuracy = hitCount + errorCount ? Math.round((hitCount / (hitCount + errorCount)) * 100) : 0;
+      reactionBoard.classList.add('is-hidden'); reactionResults.hidden = false;
+      reactionResults.innerHTML = `<h2>Sessão concluída</h2><p>${hitCount} acertos · ${errorCount} erros</p><p>Média de reação: <b>${average || '—'}ms</b> · Precisão: <b>${accuracy}%</b></p><button class="button" id="restartReaction">Treinar novamente ↗</button>`;
+      tone(660,.16,'triangle');
+      reactionResults.querySelector('#restartReaction').addEventListener('click', beginReactionGame);
+    };
+    const queueRound = () => {
+      if (!gameRunning) return; clearRound(); reactionStatus.textContent = 'Mantenha o foco';
+      const wait = Math.max(480, 1300 - hitCount * 18) + Math.random() * 850;
+      waitTimeout = setTimeout(() => {
+        if (!gameRunning) return; activeTile = Math.floor(Math.random() * reactionTiles.length); if (reactionTiles.length > 1 && activeTile === lastTile) activeTile = (activeTile + 1 + Math.floor(Math.random() * (reactionTiles.length - 1))) % reactionTiles.length; lastTile = activeTile; roundMode = Math.random() < .7 ? 'go' : 'nogo';
+        const tile = reactionTiles[activeTile]; tile.classList.add(roundMode === 'go' ? 'target' : 'nogo'); tile.textContent = roundMode === 'go' ? 'VAI!' : 'NÃO VAI!'; roundStartedAt = performance.now(); reactionStatus.textContent = roundMode === 'go' ? 'AGORA' : 'CONTROLE'; tone(roundMode === 'go' ? 830 : 280,.075);
+        targetTimeout = setTimeout(() => { if (activeTile < 0) return; if (roundMode === 'go') { errorCount += 1; reactionStatus.textContent = 'TEMPO ESGOTADO'; tone(150,.12,'sawtooth'); } else { hitCount += 1; reactionStatus.textContent = 'CONTROLE · CERTO'; tone(620,.08,'triangle'); } updateReactionStats(); queueRound(); }, 1200);
+      }, wait);
+    };
+    const penalize = tile => {
+      errorCount += 1; clearRound(); tile.classList.add('error'); tile.textContent = 'NÃO VAI!'; reactionStatus.textContent = 'ERRO · ESPERE O SINAL'; tone(130,.13,'sawtooth'); updateReactionStats(); waitTimeout = setTimeout(queueRound, 600);
+    };
+    const beginReactionGame = () => {
+      clearRound(); clearInterval(sessionInterval); clearInterval(countdownInterval); hitCount = 0; errorCount = 0; totalReaction = 0; reactionSamples = 0; lastTile = -1; gameRunning = false;
+      reactionGame.hidden = false; document.body.classList.add('game-open'); reactionResults.hidden = true; reactionBoard.classList.remove('is-hidden'); reactionStatus.textContent = '3'; resetTiles();
+      let count = 3; countdownInterval = setInterval(() => { count -= 1; reactionStatus.textContent = count ? String(count) : 'COMEÇAR'; tone(count ? 420 : 700,.06); if (!count) { clearInterval(countdownInterval); gameRunning = true; sessionEndsAt = Date.now() + 30000; updateReactionStats(); sessionInterval = setInterval(() => { updateReactionStats(); if (Date.now() >= sessionEndsAt) finishSession(); }, 100); queueRound(); } }, 650);
+    };
+    const endReactionGame = () => { gameRunning = false; clearRound(); clearInterval(sessionInterval); clearInterval(countdownInterval); reactionGame.hidden = true; document.body.classList.remove('game-open'); };
+    reactionTiles.forEach((tile, index) => tile.addEventListener('click', () => {
+      if (!gameRunning) return;
+      if (index !== activeTile || roundMode !== 'go') return penalize(tile);
+      const reaction = performance.now() - roundStartedAt; hitCount += 1; totalReaction += reaction; reactionSamples += 1; clearTimeout(targetTimeout); activeTile = -1; tile.classList.remove('target'); tile.textContent = '✓'; reactionStatus.textContent = `ACERTO · ${Math.round(reaction)}ms`; tone(980,.09,'triangle'); updateReactionStats(); waitTimeout = setTimeout(queueRound, 220);
+    }));
+    gameCards[0].querySelector('.card-action').addEventListener('click', beginReactionGame);
+    closeReactionGame.addEventListener('click', endReactionGame);
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && !reactionGame.hidden) endReactionGame(); });
+  </script>
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
+    const stage = document.querySelector('#brainStage');
+    const title = document.querySelector('#brainTitle');
+    const description = document.querySelector('#brainDescription');
+    const tags = document.querySelector('#brainTags');
+    const launch = document.querySelector('#brainLaunch');
+    const loading = stage.querySelector('.brain-loading');
+    const fallback = document.querySelector('#brainFallback');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+    camera.position.set(0, .15, 5.8);
+    const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    stage.appendChild(renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; controls.enablePan = false; controls.minDistance = 3.7; controls.maxDistance = 7.2;
+    controls.target.set(0, .1, 0); controls.autoRotate = true; controls.autoRotateSpeed = .45;
+    const hemisphere = new THREE.HemisphereLight(0xbcecff, 0x061116, 2.6); scene.add(hemisphere);
+    const key = new THREE.DirectionalLight(0xd8f5ff, 3.5); key.position.set(3, 4, 4); scene.add(key);
+    const rim = new THREE.PointLight(0x43b8ed, 18, 9); rim.position.set(-3, -1, 2); scene.add(rim);
+    const brain = new THREE.Group(); scene.add(brain);
+    const brainMaterial = new THREE.MeshStandardMaterial({ color:0x7798a5, roughness:.52, metalness:.08, emissive:0x08212d, emissiveIntensity:.55 });
+    const points = [];
+    const pointData = {
+      reaction:{ title:'Reação explosiva', description:'Ênfase em resposta rápida e controle inibitório — reconhecer o sinal certo e frear a resposta quando necessário.', tags:['RESPOSTA RÁPIDA','INIBIÇÃO','ATENÇÃO'], action:'INICIAR REAÇÃO EXPLOSIVA' },
+      decision:{ title:'Pressão de decisão', description:'Ênfase em controle executivo e flexibilidade cognitiva para ajustar decisões sob pressão.', tags:['DECISÃO','FLEXIBILIDADE','CONTROLE EXECUTIVO'], action:'EM BREVE' },
+      visual:{ title:'Rastreio visual', description:'Ênfase em atenção visual, varredura espacial e percepção do campo ao redor.', tags:['ATENÇÃO VISUAL','VARREDURA ESPACIAL','PERCEPÇÃO'], action:'EM BREVE' },
+      focus:{ title:'Grades de concentração', description:'Ênfase em atenção sustentada e manutenção do foco em uma meta por mais tempo.', tags:['FOCO','ATENÇÃO SUSTENTADA','PRECISÃO'], action:'EM BREVE' }
+    };
+    const hotspot = (id, position) => {
+      const group = new THREE.Group(); group.position.set(...position); group.userData = { id };
+      const glow = new THREE.Mesh(new THREE.SphereGeometry(.16, 24, 24), new THREE.MeshBasicMaterial({ color:0x9de8ff, transparent:true, opacity:.18 }));
+      const core = new THREE.Mesh(new THREE.SphereGeometry(.065, 24, 24), new THREE.MeshBasicMaterial({ color:0xeaffff }));
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(.12, .012, 10, 30), new THREE.MeshBasicMaterial({ color:0x78d9ff }));
+      group.add(glow, core, ring); brain.add(group); points.push(group);
+    };
+    const setBrainInfo = id => {
+      const data = pointData[id]; if (!data) return;
+      title.textContent = data.title; description.textContent = data.description;
+      tags.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join('');
+      launch.textContent = data.action;
+      launch.disabled = id !== 'reaction';
+      launch.onclick = id === 'reaction' ? () => document.querySelector('#metodo > .wrap > .accordion-grid:not(.programs) .card-action').click() : null;
+      points.forEach(point => point.children[2].material.color.set(point.userData.id === id ? 0xffffff : 0x78d9ff));
+    };
+    const loader = new GLTFLoader();
+    loader.load('assets/brain/source/Rotten%20Brain.glb', gltf => {
+      const model = gltf.scene;
+      const box = new THREE.Box3().setFromObject(model); const center = box.getCenter(new THREE.Vector3()); const size = box.getSize(new THREE.Vector3());
+      const scale = 3.1 / Math.max(size.x, size.y, size.z); model.scale.setScalar(scale); model.position.sub(center.multiplyScalar(scale));
+      model.traverse(item => { if (item.isMesh) { item.material = brainMaterial.clone(); item.castShadow = false; } });
+      brain.add(model);
+      hotspot('reaction', [-.85, .18, 1.05]); hotspot('decision', [.72, .55, .86]); hotspot('visual', [-1.18, -.2, .7]); hotspot('focus', [.32, 1.03, .48]);
+      fallback.classList.add('is-hidden'); loading.remove(); setBrainInfo('reaction');
+    }, undefined, () => { loading.hidden = true; });
+    const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
+    renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; });
+    renderer.domElement.addEventListener('click', event => {
+      const rect = renderer.domElement.getBoundingClientRect(); pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1; pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera); const hit = raycaster.intersectObjects(points, true)[0];
+      if (!hit) return; let target = hit.object; while (target.parent && !target.userData.id) target = target.parent; setBrainInfo(target.userData.id);
+    });
+    const resize = () => { const width = stage.clientWidth; const height = stage.clientHeight; if (!width || !height) return; camera.aspect = width / height; camera.updateProjectionMatrix(); renderer.setSize(width, height, false); };
+    new ResizeObserver(resize).observe(stage); resize();
+    const animate = () => { requestAnimationFrame(animate); points.forEach((point, index) => { const pulse = 1 + Math.sin(performance.now() * .003 + index) * .12; point.children[0].scale.setScalar(pulse); point.children[2].rotation.z += .01; }); controls.update(); renderer.render(scene, camera); }; animate();
+  </script>
+</body></html>

@@ -254,10 +254,13 @@
     closeReactionGame.addEventListener('click', endReactionGame);
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && !reactionGame.hidden) endReactionGame(); });
   </script>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.145.0/build/three.module.js"}}
+  </script>
   <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+    import * as THREE from 'three';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.145.0/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.145.0/examples/jsm/loaders/GLTFLoader.js';
 
     const stage = document.querySelector('#brainStage');
     const title = document.querySelector('#brainTitle');

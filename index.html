@@ -139,6 +139,10 @@
     #metodo > .wrap > .accordion-grid:not(.programs) details.card summary > *{display:none}
     #metodo > .wrap > .accordion-grid:not(.programs) details.card summary:after{content:var(--placeholder-label,'Treino em preparação');color:#a4a4a4;font:500 11px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
     #metodo > .wrap > .accordion-grid:not(.programs) details.card .card-body{display:none}
+    /* Repeated carousel cards retain their athlete art on every loop. */
+    .athlete:nth-child(3n + 1){background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-01.jpg')}
+    .athlete:nth-child(3n + 2){background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-02.jpg')}
+    .athlete:nth-child(3n){background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-03.jpg')}
   </style>
 </head>
 <body>
@@ -155,12 +159,18 @@
     window.addEventListener('pageshow', () => requestAnimationFrame(() => window.scrollTo(0, 0)));
     const carousel = document.querySelector('.athlete-carousel');
     const track = carousel.querySelector('.athletes');
-    track.innerHTML += track.innerHTML;
+    const baseCardCount = track.children.length;
+    const originalCards = Array.from(track.children);
+    while (track.children.length < baseCardCount * 4) {
+      originalCards.forEach(card => track.appendChild(card.cloneNode(true)));
+    }
     let isDragging = false, startX = 0, startScroll = 0, frame;
+    const loopWidth = () => track.children[baseCardCount].offsetLeft - track.children[0].offsetLeft;
     const loop = () => {
       if (!isDragging) {
         carousel.scrollLeft += .55;
-        if (carousel.scrollLeft >= track.scrollWidth / 2) carousel.scrollLeft -= track.scrollWidth / 2;
+        const cycle = loopWidth();
+        if (cycle && carousel.scrollLeft >= cycle) carousel.scrollLeft -= cycle;
       }
       frame = requestAnimationFrame(loop);
     };

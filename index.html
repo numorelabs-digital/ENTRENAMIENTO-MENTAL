@@ -17,7 +17,7 @@
     nav { height:78px; display:flex; align-items:center; justify-content:space-between; position:absolute; inset:0 0 auto; z-index:3; }
     .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.11em; font-size:11px; text-transform:uppercase; }
     .brand img { width:39px; height:39px; border-radius:50%; object-fit:cover; }
-    .nav-links { display:flex; gap:28px; color:#d2d4d0; font-size:13px; }
+    .nav-links { position:absolute; left:50%; transform:translateX(-50%); display:flex; gap:28px; color:#d2d4d0; font-size:13px; }
     .language-switcher { position:relative; margin-left:auto; margin-right:18px; }
     .language-toggle { display:inline-flex; align-items:center; gap:7px; border:1px solid rgba(255,255,255,.38); border-radius:99px; padding:8px 11px; background:transparent; color:#f5f5f3; font:600 10px 'DM Mono',monospace; letter-spacing:.06em; cursor:pointer; }
     .language-toggle:hover { border-color:#fff; }
@@ -180,7 +180,7 @@
       document.querySelector('.hero h1').innerHTML = copy.heroTitle; document.querySelector('.hero .intro').innerHTML = copy.heroIntro; document.querySelector('.hero .button').innerHTML = `${copy.heroButton} <span>→</span>`;
       document.querySelector('#atletas h2').textContent = copy.athletes; document.querySelector('.training-head .eyebrow').textContent = copy.prep; document.querySelector('.training-head h2').textContent = copy.trainingTitle; document.querySelector('.training-head .intro').textContent = copy.trainingIntro;
       gameCards.forEach((card,index) => { const data = copy.cards[index]; card.querySelector('.card-title').textContent = data[0]; const body = card.querySelector('.card-body'); body.querySelector('p').textContent = data[1]; body.querySelector('.metrics').innerHTML = data[2].map(metric => `<span class="metric">${metric}</span>`).join(''); body.querySelectorAll('p')[1].textContent = data[3]; body.querySelector('.card-action').textContent = language === 'pt' ? 'INICIAR' : language === 'es' ? 'INICIAR' : 'START'; });
-      document.querySelector('.training-note').innerHTML = `<b>${copy.noteTitle}</b>${copy.note}`; document.querySelector('.programs-title h3').textContent = copy.programs;
+      document.querySelector('.training-note').innerHTML = `<b>${copy.noteTitle}</b>${copy.note}`; document.querySelector('.programs-title h3').textContent = language === 'pt' ? 'Programas Dominant Athlete' : language === 'es' ? 'Programas Dominant Athlete' : 'Dominant Athlete Programs';
       document.querySelectorAll('.program-card').forEach((card,index) => { const data = copy.programs[index]; card.querySelector('.card-title').textContent = data[0]; card.querySelector('.card-body p').textContent = data[1]; card.querySelector('.card-action').innerHTML = `${data[2]} <span>↗</span>`; });
       document.querySelector('.cta-lead').textContent = copy.ctaLead; document.querySelector('.cta-detail').textContent = copy.ctaDetail; document.querySelector('.cta .button').innerHTML = `${copy.ctaButton} <span>↗</span>`;
       try { localStorage.setItem('tda-language', language); } catch (_) {}

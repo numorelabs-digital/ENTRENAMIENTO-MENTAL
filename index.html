@@ -127,6 +127,18 @@
     .hero-card img{border-radius:18px}
     @media(min-width:721px){.hero h1{white-space:nowrap}}
     @media(max-width:720px){.hero{min-height:0;padding:88px 0 46px}.hero-content{grid-template-columns:1fr;gap:26px}.hero h1{font-size:clamp(40px,11vw,52px);white-space:normal}.hero-card{width:min(100%,325px);max-width:none}}
+    /* Training placeholders: neutral, inactive cards until the exercises are ready. */
+    .training-head .eyebrow{display:none}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card,
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card:hover,
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card[open]{min-height:128px;background:transparent;border-color:#303030;box-shadow:none;transform:none;pointer-events:none}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card:before,
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card:after{display:none}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card summary{min-height:126px;padding:0;display:grid;grid-template-columns:1fr;place-items:center}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card summary:before,
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card summary > *{display:none}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card summary:after{content:var(--placeholder-label,'Treino em preparação');color:#a4a4a4;font:500 11px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+    #metodo > .wrap > .accordion-grid:not(.programs) details.card .card-body{display:none}
   </style>
 </head>
 <body>
@@ -200,11 +212,14 @@
     languageContent.es.heroIntro = 'Desarrolla enfoque, confianza y control mental para competir a tu mejor nivel.';
     languageContent.en.heroTitle = 'Your mind. Your game.';
     languageContent.en.heroIntro = 'Build focus, confidence, and mental control to compete at your best.';
+    languageContent.pt.placeholder = 'Treino em preparação';
+    languageContent.es.placeholder = 'Entrenamiento en preparación';
+    languageContent.en.placeholder = 'Training in development';
     const languageToggle = document.querySelector('#languageToggle');
     const languageMenu = document.querySelector('#languageMenu');
     const applyLanguage = language => {
       const copy = languageContent[language] || languageContent.pt;
-      document.documentElement.lang = copy.lang; document.title = copy.title; document.querySelector('meta[name="description"]').content = copy.description; document.documentElement.style.setProperty('--prep-label', `'${copy.prep}'`);
+      document.documentElement.lang = copy.lang; document.title = copy.title; document.querySelector('meta[name="description"]').content = copy.description; document.documentElement.style.setProperty('--prep-label', `'${copy.prep}'`); document.documentElement.style.setProperty('--placeholder-label', `'${copy.placeholder}'`);
       languageToggle.textContent = `${copy.code}⌄`; languageMenu.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-current', button.dataset.language === language ? 'true' : 'false'));
       document.querySelectorAll('.nav-links a').forEach((link,index) => link.textContent = copy.nav[index]); document.querySelector('nav > .button').innerHTML = `${copy.start} <span>↗</span>`;
       document.querySelector('.hero h1').innerHTML = copy.heroTitle; document.querySelector('.hero .intro').innerHTML = copy.heroIntro; document.querySelector('.hero .button').innerHTML = `${copy.heroButton} <span>→</span>`;

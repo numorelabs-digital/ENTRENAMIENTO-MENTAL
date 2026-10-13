@@ -55,7 +55,7 @@
     .athlete:nth-child(3) { background-image:linear-gradient(0deg,rgba(0,0,0,.76),transparent 60%),url('athlete-03.jpg'); }
     .athlete-info { position:absolute; inset:auto 22px 20px; } .athlete-info b { display:block; font-size:18px; letter-spacing:-.03em; }
     .athlete-info span { font:10px 'DM Mono',monospace; text-transform:uppercase; color:#ced0cb; letter-spacing:.09em; }
-    .training { background:#171717; } .training-head { max-width:730px; margin-bottom:35px; } .training-head .eyebrow { display:none; }
+    .training { background:#171717; } .training-head { max-width:730px; margin-bottom:35px; } .training-head .eyebrow { display:flex; }
     .training-head h2 { margin-bottom:16px; } .training-head .intro { margin:0; max-width:650px; font-size:14px; }
     .accordion-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; align-items:start; }
     #metodo > .wrap > .accordion-grid:not(.programs) { display:grid; }
@@ -178,7 +178,7 @@
       languageToggle.textContent = `${copy.code}⌄`; languageMenu.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-current', button.dataset.language === language ? 'true' : 'false'));
       document.querySelectorAll('.nav-links a').forEach((link,index) => link.textContent = copy.nav[index]); document.querySelector('nav > .button').innerHTML = `${copy.start} <span>↗</span>`;
       document.querySelector('.hero h1').innerHTML = copy.heroTitle; document.querySelector('.hero .intro').innerHTML = copy.heroIntro; document.querySelector('.hero .button').innerHTML = `${copy.heroButton} <span>→</span>`;
-      document.querySelector('#atletas h2').textContent = copy.athletes; document.querySelector('.training-head h2').textContent = copy.trainingTitle; document.querySelector('.training-head .intro').textContent = copy.trainingIntro;
+      document.querySelector('#atletas h2').textContent = copy.athletes; document.querySelector('.training-head .eyebrow').textContent = copy.prep; document.querySelector('.training-head h2').textContent = copy.trainingTitle; document.querySelector('.training-head .intro').textContent = copy.trainingIntro;
       gameCards.forEach((card,index) => { const data = copy.cards[index]; card.querySelector('.card-title').textContent = data[0]; const body = card.querySelector('.card-body'); body.querySelector('p').textContent = data[1]; body.querySelector('.metrics').innerHTML = data[2].map(metric => `<span class="metric">${metric}</span>`).join(''); body.querySelectorAll('p')[1].textContent = data[3]; body.querySelector('.card-action').textContent = language === 'pt' ? 'INICIAR' : language === 'es' ? 'INICIAR' : 'START'; });
       document.querySelector('.training-note').innerHTML = `<b>${copy.noteTitle}</b>${copy.note}`; document.querySelector('.programs-title h3').textContent = copy.programs;
       document.querySelectorAll('.program-card').forEach((card,index) => { const data = copy.programs[index]; card.querySelector('.card-title').textContent = data[0]; card.querySelector('.card-body p').textContent = data[1]; card.querySelector('.card-action').innerHTML = `${data[2]} <span>↗</span>`; });
